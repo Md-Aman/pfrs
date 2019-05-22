@@ -8,11 +8,31 @@ var cors = require("cors");
 var path = require("path");
 
 /*................................*/
-var app = express();
+const app = express();
+const shared = require("./routes/shared");
 
 app.use(cors());
 app.use(bodyparser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use("/shared", shared);
+
+mongoose.connect('mongodb://localhost:27017/pfrs', { useNewUrlParser: true });
+
+//check connection
+
+mongoose.connection.on('connected',() =>{
+    console.log("Connected to Database");
+});
+
+mongoose.connection.on('error',(err) =>{
+    if(err){
+        console.log("Error in Database connection :" + err);
+    }
+});
+
+
+// testing the server
 
 app.get('/', (req, res)=>{
     res.send("its working");
