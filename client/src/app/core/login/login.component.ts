@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from './../services/user/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private toastrService: ToastrService) {
+    private toastrService: ToastrService,
+    private router: Router) {
 
   }
   // "../node_modules/bootstrap/dist/js/bootstrap.js"
@@ -64,5 +66,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
+
+  signUp(){
+    this.router.navigate(['/signup']);
+  }
 
 }
