@@ -2,6 +2,7 @@
 var userObject = require('./../models/user.js');
 
 exports.create = function (req, res) {
+    console.log("req. body :", req.body)
     let newUser = new userObject({
         name: req.body.name,
         email: req.body.email
@@ -11,7 +12,7 @@ exports.create = function (req, res) {
         if(err){
             res.json({'message': 'Fail to add'});
         }else{
-            res.json({'message': 'Added successfully'});
+            res.json({'message': 'Added successfully.'});
         }
     })
 };
