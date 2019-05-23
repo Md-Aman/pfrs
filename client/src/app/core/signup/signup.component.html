@@ -1,43 +1,46 @@
 <!doctype html>
 <html lang="en">
-   <body class="bg-white">
-      <div class="container-fluid">
-         <div class="row no-gutter">
+
+<body class="bg-white">
+    <div class="container-fluid">
+        <div class="row no-gutter">
             <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
             <div class="col-md-8 col-lg-6">
-               <div class="login d-flex align-items-center py-5">
-                  <div class="container">
-                     <div class="row">
-                        <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
-                           <h3 class="login-heading mb-4">New Buddy!</h3>
-                           <form> 
-                              <div class="form-label-group">
-                                 <input type="text" id="inputUid" class="form-control" placeholder="Username">
-                                 <label for="inputUid">Username</label>
-                              </div>
-                              <div class="form-label-group">
-                                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address">
-                                 <label for="inputEmail">Email address</label>
-                              </div>
-                              <div class="form-label-group">
-                                 <input type="password" id="inputPassword" class="form-control" placeholder="Password">
-                                 <label for="inputPassword">Password</label>
-                              </div>
-                              <div class="form-label-group">
-                                 <input type="password" id="confirmPassword" class="form-control" placeholder="Password">
-                                 <label for="confirmPassword">Confirm Password</label>
-                              </div>
-                              <a href="index.html" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Sign Up</a>
-                              <div class="text-center pt-3">
-                                 Already have an Account? <a class="font-weight-bold signin" (click)="signIn()">Sign In</a>
-                              </div>
-                           </form>
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
+                                <h3 class="login-heading mb-4">New Buddy!</h3>
+                                <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+                                    <div class="form-label-group form-group">
+                                        <input type="text" id="FirstName" formControlName="FirstName" class="form-control">
+                                        <label for="FirstName">First Name</label>
+                                    </div>
+                                    <div class="form-label-group form-group">
+                                        <input type="text" id="LastName" formControlName="LastName" class="form-control">
+                                        <label for="LastName">Last Name</label>
+                                    </div>
+                                    <div class="form-label-group form-group">
+                                        <input type="number" id="Age" formControlName="Age" class="form-control">
+                                        <label for="Age">Age</label>
+                                    </div>
+                                    <div class="form-label-group form-group">
+                                        <input type="email" id="Email" formControlName="Email" class="form-control">
+                                        <label for="Email">Email Address</label>
+                                    </div>
+                                    <button class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Sign Up</button>
+                                    <div class="text-center pt-3">
+                                        Already have an Account?
+                                        <a class="font-weight-bold signin" (click)="signIn()">Sign In</a>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </body>
+        </div>
+    </div>
+</body>
+
 </html>

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   errorText: string = "Something happend wrong please try again";
-  loginForm: FormGroup;
+  signUpForm: FormGroup;
   ages = [];
 
   constructor(
@@ -38,25 +38,21 @@ export class LoginComponent implements OnInit {
   }
 
   buildLoginForm() {
-    this.loginForm = this.formBuilder.group({
-      FirstName: ['', [Validators.required, Validators.minLength(2)]],
-      LastName: ['', [Validators.required, Validators.minLength(2)]],
-      Age: ['', [Validators.required]],
+    this.signUpForm = this.formBuilder.group({
       Email: ['', [Validators.required, Validators.pattern(
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       )]],
+      Password: ['', [Validators.required]],
     });
   }
 
   onSubmit(inputValue) {
-    if (this.loginForm.valid) {
-      console.log("values :", inputValue);
-
-      this.userService.createNewUser(inputValue).subscribe((response: any) => {
-        console.log("respon :", response);
+    if (this.signUpForm.valid) {
+      this.userService.userLogin(inputValue).subscribe((response: any) => {
         if (response.code === 200) {
-          console.log("Success status:", response.message);
+          this.userService.setUser(response.data);
           this.toastrService.success(response.message, 'Success:', { enableHtml: true });
+          this.router.navigate(['/dashboard']);
         } else {
           this.toastrService.warning(response.message, 'Warning:', { enableHtml: true });
         }

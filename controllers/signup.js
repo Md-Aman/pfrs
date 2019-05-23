@@ -34,7 +34,7 @@ exports.createNewUser = function (req, res) {
                 subject: 'Foodhub - Signed up successful',
                 html: '<p> Dear ' + req.body.FirstName + ',</p>' +
                     '<p> Your account has been created successfully. Please click <a href= "http://localhost:4200/login">here</a> here to continue.' +
-                    '<p> Your password to access to the platforam is: ' +password+
+                    '<p> Your password to access to the platforam is: ' + password +
                     '<p></p> <p></p>' +
                     '<p>Thank you,</p>' +
                     '<p>Foodhub Team</p>'
@@ -59,17 +59,43 @@ exports.createNewUser = function (req, res) {
 };
 
 
-exports.users = function (req, res) {
-    res.send("it is absolutely UPDATE");
+exports.login = function (req, res) {
+    console.log("body :", req.body);
+    if (req.body) {
+        userObject.findOne({
+            email: req.body.Email
+        }, function (err, data) {
+            if (err) {
+                res.json({
+                    'code': 400,
+                    'message': "Something happend wrong. Please try again later."
+                });
+            } else {
+                if (data) {
+                    if (data.password == req.body.Password) {
+                        res.json({
+                            'code': 200,
+                            'message': "Login successful",
+                            'data': data
+                        });
+                    } else{
+                        res.json({
+                            'code': 400,
+                            'message': "Password is incorrect.",
+                            'data': data
+                        });
+                    }
+                } else {
+                    res.json({
+                        'code': 400,
+                        'message': "Email does not exist.",
+                    });
+                }
+            }
+        })
+    }
 };
 
 exports.delete = function (req, res) {
     res.send("it is absolutely DELETE");
 };
-
-
-var sendEmail = function (first_name, email, password) {
-
-
-
-}
