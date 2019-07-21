@@ -12,7 +12,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 import { ToastrModule } from 'ngx-toastr';
 import { SignupComponent } from './core/signup/signup.component';
-import { DashboardComponent } from './core/dashboard/dashboard.component';
+import { HeaderComponent } from './core/header/header.component';
+import { SearchFoodComponent } from './core/search-food/search-food.component';
+
+
+
 
 
 @NgModule({
@@ -20,7 +24,9 @@ import { DashboardComponent } from './core/dashboard/dashboard.component';
     AppComponent,
     LoginComponent,
     SignupComponent,
-    DashboardComponent
+    HeaderComponent,
+    SearchFoodComponent,
+
   ],
   imports: [
     BrowserModule,

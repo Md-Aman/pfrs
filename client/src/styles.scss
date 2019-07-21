@@ -2,22 +2,17 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import '~ngx-toastr/toastr';
 
-/*
--- Body
--- Nav
--- login/Register
--- Homepage Search Block
--- Homepage
--- Customize Bootstrap
--- Listing
--- Detail
--- Checkout Page
--- My Account
--- Track Order Page
--- Footer
--- Mobile Media
-*/
-/* Body */
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+    background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+.centeredLayout {
+    background: #fff; @include border-radius(6px);
+    box-shadow: 0 0 10px #ADAEAF; margin: 30px; padding: 30px;
+}
+
+
 body {
     background: #f3f7f8;
     font-size: 13px;

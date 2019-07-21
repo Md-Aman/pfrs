@@ -4,14 +4,14 @@ import { UserService } from './../services/user/user.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
   isUserExist: boolean = false;
-  userData: any ;
+  userData: any;
   constructor(
     private router: Router,
     private userService: UserService,
@@ -20,17 +20,17 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     console.log("users :", this.userService.getUser());
-    if(this.userService.getUser() !== null){
+    if (this.userService.getUser() !== null) {
       this.userData = this.userService.getUser();
       this.isUserExist = true;
     }
   }
 
-  signIn(){
+  signIn() {
     this.router.navigate(['/login']);
   }
 
-  signOut(){
+  signOut() {
     this.isUserExist = false;
     this.userService.removeUser();
     this.toastrService.info("Sign out successful", 'Warning:', { enableHtml: true });
