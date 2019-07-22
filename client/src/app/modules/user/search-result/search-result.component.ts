@@ -11,11 +11,12 @@ export class SearchResultComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
+
   param1: string;
   param2: string;
   param3: string;
-
-
+  
+  data = [{ key: 'value' }, { key: 'value' }, { key: 'value' }]
   ngOnInit() {
 
     this.activatedRoute.queryParams.subscribe(params => {

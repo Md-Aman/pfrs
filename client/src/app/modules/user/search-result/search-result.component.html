@@ -1,10 +1,29 @@
-<p>
-  {{param1}}
-</p>
-<p>
-  {{param2}}
-</p>
+<div class="centeredLayout">
+  <div class="row" *ngFor="let i of data">
+    &nbsp;
+    <div class="column">
+      <div class="card">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td>Food Name</td>
+              <td>Halal-Status: Non-halal</td>
+              <td>Price: 15.20</td>
+            </tr>
+            <tr>
+              <td>Type: Veg</td>
+              <td>Allergic: No</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Ingredients: Potato, Onion, Garlic, Chilli</td>
+              <td>Calories: 15.9l</td>
+              <td><button>Add to Cart</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-<p>
-  {{param3}}
-</p>
+  </div>
+</div>
