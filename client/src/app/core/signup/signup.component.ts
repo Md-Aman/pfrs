@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  errorText: string = "Something happend wrong please try again";
+  errorText: string = "Something happend wrong. please try again";
   loginForm: FormGroup;
   ages = [];
 

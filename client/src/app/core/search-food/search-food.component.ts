@@ -17,24 +17,34 @@ export class SearchFoodComponent implements OnInit {
   searchFoodForm: FormGroup;
 
   ngOnInit() {
-    this.searchFoodForm = this.formBuilder.group({
-      email: ['', [Validators.required]],
-      mobileNumber: ['', [Validators.required]],
-      website: ['', [Validators.required]],
-    });
+    this.buildForm();
 
+  }
+
+  buildForm(){
+    this.searchFoodForm = this.formBuilder.group({
+      food_type: ['', [Validators.required]],
+      halal_status: ['', [Validators.required]],
+      session: ['', [Validators.required]],
+      preference: ['', [Validators.required]],
+      price: ['', [Validators.required]]
+    });
   }
 
   searchFood(inputValue) {
     console.log("Input value :", inputValue);
-    this.router.navigate(['/user/search-result'], {
-      queryParams: {
-        email: inputValue.email,
-        mobileNumber: inputValue.mobileNumber,
-        website: inputValue.website
-      },
-      queryParamsHandling: 'merge',
-    });
+    if (this.searchFoodForm.valid) {
+      this.router.navigate(['/user/search-result'], {
+        queryParams: {
+          food_type: inputValue.food_type,
+          halal_status: inputValue.halal_status,
+          session: inputValue.session,
+          preference: inputValue.preference,
+          price: inputValue.price,
+        },
+        queryParamsHandling: 'merge',
+      });
+    }
   }
 
 }

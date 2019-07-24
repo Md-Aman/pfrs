@@ -1,5 +1,7 @@
 
 var userObject = require('./../models/user.js');
+
+var foodObject = require('./../models/food.js');
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
@@ -78,7 +80,7 @@ exports.login = function (req, res) {
                             'message': "Login successful",
                             'data': data
                         });
-                    } else{
+                    } else {
                         res.json({
                             'code': 400,
                             'message': "Password is incorrect.",
@@ -95,6 +97,58 @@ exports.login = function (req, res) {
         })
     }
 };
+
+
+
+exports.saveFood = function (req, res) {
+    let newFood = new foodObject(
+        {
+            "name": "Spaghetti Chicken",
+            "food_type": "Non-Vegetarian",
+            "price": 25, "allergic": 1, "calories": 250,
+            "preference": "Chicken",
+            "ingredients": "Garlic, Minced Chicken, Celery, Onion, Tomato Pronto, Spaghetti, Bay leaves",
+            "halal_status": "Halal", "total_ordered": 15, "added_by": "Nazrul", "session": "lunch"
+        }
+    );
+    newFood.save((err, res) => {
+        if (err) {
+            res.json({
+                'code': 400,
+                'message': "Something happend wrong. Please try again later."
+            });
+        } else {
+            return res.json({
+                'code': 200,
+                'message': 'Food added successfully',
+            });
+        }
+    })
+}
+
+
+exports.filterFood = function (req, res) {
+    if (req.body) {
+        foodObject.find({
+            preference: "Chicken",
+            halal_status: "Halal",
+            food_type: "Non-Vegetarian"
+        }, function (err, data) {
+            if (err) {
+                res.json({
+                    'code': 400,
+                    'message': "Something happend wrong. Please try again later."
+                });
+            } else {
+                return res.json({
+                    'code': 200,
+                    'data': data,
+                    'message': 'searched food successfully',
+                });
+            }
+        });
+    }
+}
 
 exports.delete = function (req, res) {
     res.send("it is absolutely DELETE");

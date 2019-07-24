@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private router: Router) {
 
   }
-  // "../node_modules/bootstrap/dist/js/bootstrap.js"
+
   ngOnInit() {
     console.log("name :", this.userService.name);
 
@@ -52,7 +52,8 @@ export class LoginComponent implements OnInit {
         if (response.code === 200) {
           this.userService.setUser(response.data);
           this.toastrService.success(response.message, 'Success:', { enableHtml: true });
-          this.router.navigate(['/dashboard']);
+          this.userService.detectTabChanges('login', 1);
+          this.router.navigate(['/search-food']);
         } else {
           this.toastrService.warning(response.message, 'Warning:', { enableHtml: true });
         }

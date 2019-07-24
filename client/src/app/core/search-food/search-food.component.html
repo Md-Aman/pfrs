@@ -2,21 +2,53 @@
   <div class="row">
     <div class="col-md-8">
       <form [formGroup]="searchFoodForm" (submit)="searchFood(searchFoodForm.value)">
-
         <div class="row">
-          <div class="form-group col-md-4">
-            <label>Email</label>
-            <input type="email" formControlName="email" class="form-control">
-          </div>
-          <div class="form-group col-md-4">
-            <label>Contact Number</label>
-            <input type="email" formControlName="mobileNumber" class="form-control">
-          </div>
-          <div class="form-group col-md-4">
-            <label>Website</label>
-            <input type="text" formControlName="website" class="form-control">
+          <div class="form-group col-md-12">
+            <label>I am a: </label>
+            <br>
+            <input type="radio" formControlName="food_type" value="veg"> Vegeterian<br>
+            <input type="radio" formControlName="food_type" value="non-veg"> Non-vegeterian<br>
           </div>
         </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label>Halal Status:</label>
+            <br>
+            <input type="radio" formControlName="halal_status" value="halal"> Hala<br>
+            <input type="radio" formControlName="halal_status" value="non-halal"> Non-halal<br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label>I want to order for:</label>
+            <br>
+            <input type="radio" formControlName="session" value="breakfast"> Breakfast<br>
+            <input type="radio" formControlName="session" value="lunch"> Lunch<br>
+            <input type="radio" formControlName="session" value="dinner"> Dinner<br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label>My Preference:</label>
+            <br>
+            <input type="radio" *ngIf="searchFoodForm.value.food_type == 'non-veg'" formControlName="preference" value="chicken"> Chicken<br>
+            <input type="radio" *ngIf="searchFoodForm.value.food_type == 'non-veg'" formControlName="preference" value="beef"> Beef<br>
+            <input type="radio" *ngIf="searchFoodForm.value.food_type == 'non-veg'" formControlName="preference" value="pork"> Pork<br>
+            <input type="radio" *ngIf="searchFoodForm.value.food_type == 'veg'" formControlName="preference" value="salad"> Salad<br>
+            <input type="radio" *ngIf="searchFoodForm.value.food_type == 'veg'" formControlName="preference" value="only veg"> Only Veg<br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label>Price:</label>
+            <input type="number" formControlName="price" class="form-control">
+          </div>
+        </div>
+        <!-- <div class="form-group col-md-4">
+              <label>Website</label>
+              <input type="text" formControlName="website" class="form-control">
+            </div> -->
 
         <button type="submit">Search Food</button>
 

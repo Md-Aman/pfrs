@@ -4,7 +4,8 @@ var user = require('./../controllers/signup.js');
 
 router.post('/signup', user.createNewUser); 
 router.post('/userLogin', user.login); 
-// router.get('/users', user.users); 
+router.post('/filterFood', user.filterFood); 
+
 router.delete('/users/:id', user.delete); 
 
 module.exports = router;

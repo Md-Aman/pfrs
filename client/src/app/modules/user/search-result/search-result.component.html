@@ -1,23 +1,24 @@
 <div class="centeredLayout">
-  <div class="row" *ngFor="let i of data | paginate: config">
+  <div class="row" *ngFor="let item of searchResult | paginate: config">
     &nbsp;
     <div class="column">
       <div class="card">
         <table class="table table-bordered">
           <tbody>
             <tr>
-              <td>Food Name</td>
-              <td>Halal-Status: Non-halal</td>
-              <td>Price: 15.20</td>
+              <td>{{item.name}}</td>
+              <td>Halal-Status: {{ item.halal-Status }}</td>
+              <td>Price: {{ item.price }}</td>
             </tr>
             <tr>
-              <td>Type: Veg</td>
-              <td>Allergic: No</td>
+              <td>Type: {{item.food_type}}</td>
+              <td *ngIf="item.allergic == 1">Allergic: Yes</td>
+              <td *ngIf="item.allergic == 0">Allergic: No</td>
               <td></td>
             </tr>
             <tr>
-              <td>Ingredients: Potato, Onion, Garlic, Chilli</td>
-              <td>Calories: 15.9l</td>
+              <td>Ingredients: {{item.ingredients}}</td>
+              <td>Calories: {{item.calories}}</td>
               <td><button (click)="goToCart()">Add to Cart</button></td>
             </tr>
           </tbody>
