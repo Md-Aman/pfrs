@@ -4,11 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminIndividualItemComponent } from './admin-individual-item/admin-individual-item.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { UserListComponent } from './/user-list/user-list.component';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 
 const routes: Routes = [
   { path: 'add-food', component: AdminIndividualItemComponent },
-  { path: 'orders', component: UserOrdersComponent },
-  { path: 'users', component: UserListComponent },
+  { path: 'food/:action/:id', component: ItemDetailsComponent },
+  // { path: 'orders', component: UserOrdersComponent },
+  // { path: 'users', component: UserListComponent },
   // {
   //   path: 'create', component: PageComponent,
   //   children: [

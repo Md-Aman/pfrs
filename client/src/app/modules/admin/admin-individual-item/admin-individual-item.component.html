@@ -1,3 +1,19 @@
-<p>
-  admin-individual-item works!
-</p>
+<div class="centeredLayout">
+  <button class="float-right" (click)="addMoreFood()">Add food</button>
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td><input type="checkbox"></td>
+        <td>Beef Curry</td>
+        <td>Veg</td>
+        <td>Halal </td>
+        <td>12.10</td>
+        <td>
+          <button>Edit</button>
+          <button (click)="viewItem()">View</button>
+          <button>Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

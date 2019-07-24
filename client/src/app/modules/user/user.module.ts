@@ -8,6 +8,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderConfirmPageComponent } from './order-confirm-page/order-confirm-page.component';
 
+
 @NgModule({
   declarations: [
     SearchResultComponent,
@@ -17,7 +18,7 @@ import { OrderConfirmPageComponent } from './order-confirm-page/order-confirm-pa
   imports: [
     CommonModule,
     UserRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class UserModule { }

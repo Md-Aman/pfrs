@@ -1,3 +1,16 @@
-<p>
-  cart works!
-</p>
+<div class="centeredLayout">
+<table class="table">
+  <tbody>
+    <tr *ngFor="let item of data">
+      <td><input type="checkbox"></td>
+      <td>Beef Curry</td>
+      <td>Veg</td>
+      <td>Halal </td>
+      <td>12.10</td>
+      <td>Remove</td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="float-right" (click)="placeOrder()">Place order</button>
+</div>

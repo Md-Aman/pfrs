@@ -15,9 +15,7 @@ import { SignupComponent } from './core/signup/signup.component';
 import { HeaderComponent } from './core/header/header.component';
 import { SearchFoodComponent } from './core/search-food/search-food.component';
 
-
-
-
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 @NgModule({
   declarations: [
@@ -26,12 +24,14 @@ import { SearchFoodComponent } from './core/search-food/search-food.component';
     SignupComponent,
     HeaderComponent,
     SearchFoodComponent,
+  
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxSmartModalModule.forRoot(),
     NgBootstrapFormValidationModule.forRoot(),
     FormsModule, 
     ReactiveFormsModule,

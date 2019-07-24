@@ -1,3 +1,33 @@
-<p>
-  order-confirm-page works!
-</p>
+<div class="centeredLayout">
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>Beef Curry</td>
+        <td>12.80 RM</td>
+      </tr>
+      <tr>
+        <td>Delivery charge</td>
+        <td>5.00 RM</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>24.80 RM</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="col-md-12">
+    <p>Payment method :</p>
+    <input type="radio" name="gender" value="male" checked="checked"> Cash on delivery<br>
+    <input type="radio" [disabled]="true" name="gender" value="female"> Online payment<br>
+    <input type="radio" [disabled]="true" name="gender" value="other"> Card payment
+  </div>
+  <button class="float-right" (click)="placeOrder(); myModal.open()">Confirm Order</button>
+</div>
+
+
+<ngx-smart-modal #myModal identifier="myModal">
+  <h1>Title</h1>
+  <p>Some stuff...</p>
+
+  <button (click)="myModal.close()">Close</button>
+</ngx-smart-modal>

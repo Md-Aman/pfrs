@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import '~ngx-toastr/toastr';
+@import "~ngx-smart-modal/ngx-smart-modal";
 
 @mixin border-radius($radius) {
     -webkit-border-radius: $radius;

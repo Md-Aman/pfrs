@@ -12,4 +12,10 @@ export class OrderConfirmPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  data = [{ key: 'value' }, { key: 'value' }];
+
+  placeOrder(){
+    
+  }
+
 }

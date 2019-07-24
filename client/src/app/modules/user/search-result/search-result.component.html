@@ -1,5 +1,5 @@
 <div class="centeredLayout">
-  <div class="row" *ngFor="let i of data">
+  <div class="row" *ngFor="let i of data | paginate: config">
     &nbsp;
     <div class="column">
       <div class="card">
@@ -18,12 +18,16 @@
             <tr>
               <td>Ingredients: Potato, Onion, Garlic, Chilli</td>
               <td>Calories: 15.9l</td>
-              <td><button>Add to Cart</button></td>
+              <td><button (click)="goToCart()">Add to Cart</button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-
   </div>
+  <div class="pagination">
+    <pagination-controls class="pagination" (pageChange)="pageChange($event)" class="my-pagination">
+    </pagination-controls>
+  </div>
+
 </div>
